@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="IM_FOR_Linux"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/masker/C++/IM_FOR_Linux/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/masker/C++/IM_FOR_Linux/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/masker/C++/IM_FOR_Linux/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="IM_FOR_Linux">
+				<Option output="/home/masker/C++/IM_FOR_Linux/cmake-build-debug/IM_FOR_Linux" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/masker/C++/IM_FOR_Linux/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/mysql"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 IM_FOR_Linux"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="IM_FOR_Linux/fast">
+				<Option output="/home/masker/C++/IM_FOR_Linux/cmake-build-debug/IM_FOR_Linux" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/masker/C++/IM_FOR_Linux/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/mysql"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 IM_FOR_Linux/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/masker/C++/IM_FOR_Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/DUtil.cpp">
+			<Option target="IM_FOR_Linux"/>
+		</Unit>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/DUtil.h">
+			<Option target="IM_FOR_Linux"/>
+		</Unit>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/TimeUtil.cpp">
+			<Option target="IM_FOR_Linux"/>
+		</Unit>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/TimeUtil.h">
+			<Option target="IM_FOR_Linux"/>
+		</Unit>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/User.cpp">
+			<Option target="IM_FOR_Linux"/>
+		</Unit>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/User.h">
+			<Option target="IM_FOR_Linux"/>
+		</Unit>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/config/mysql_config.h">
+			<Option target="IM_FOR_Linux"/>
+		</Unit>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/main.cpp">
+			<Option target="IM_FOR_Linux"/>
+		</Unit>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/main.h">
+			<Option target="IM_FOR_Linux"/>
+		</Unit>
+		<Unit filename="/home/masker/C++/IM_FOR_Linux/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
