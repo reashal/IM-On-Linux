@@ -2,10 +2,8 @@
 // Created by masker on 2021/11/3.
 //
 
-#ifndef IM_FOR_LINUX_USER_H
-#define IM_FOR_LINUX_USER_H
+#include "DUtil.h"
 #include <string>
-
 using namespace std;
 
 class User {
@@ -13,6 +11,7 @@ public:
     string username;
     string password;
     string ip;
+    DUtil dUtil;
 
     User();
 
@@ -27,7 +26,9 @@ public:
     string getIp() const;
 
     void setIp(string ip);
+
+    bool sameUserName(string username);
+
+    bool registerUser(string username,string passwd);
+
 };
-
-
-#endif //IM_FOR_LINUX_USER_H

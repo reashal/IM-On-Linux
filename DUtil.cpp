@@ -42,13 +42,12 @@ bool DUtil::CloseDB() {
 bool DUtil::queryUser(string &username, string &password) {
     bool flag = false;
     if (isOpen) {
-        string sql = "select UserName,PassWord from User where UserName = '" + username + "'" + " and PassWord = " + "'" + password +"'";
+        string sql = "select UserName,PassWord from User where UserName = '" + username + "' and PassWord = '" + password + "'";
         int res = mysql_query(reinterpret_cast<MYSQL *>(&connect), sql.c_str());
         if (!res) {
             result = mysql_store_result(reinterpret_cast<MYSQL *>(&connect));
-            if (result ) {
+            if (result && mysql_num_rows(result)) {
                 flag = true;
-                cout << "query success!" << endl;
             }
         } else {
             cout << "queryUser sql failed!" << endl;
@@ -56,9 +55,7 @@ bool DUtil::queryUser(string &username, string &password) {
     } else {
         cout << "connect failed!" << endl;
     }
-    if (result != nullptr) {
-        mysql_free_result(result);//释放结果资源
-    }
+    mysql_free_result(result);//释放结果资源
     return flag;
 }
 
@@ -75,11 +72,28 @@ bool DUtil::insertUser(string &username, string &password) {
     return flag;
 }
 
-bool DUtil::queryUsername(string &username) {
-    return false;
+//查询是否有相同用户名,有则返回true
+bool DUtil::queryUserName(string &username) {
+    bool flag = false;
+    if (isOpen) {
+        string sql = "select UserName from User where UserName = '" + username +"'";
+        int res = mysql_query(reinterpret_cast<MYSQL *>(&connect), sql.c_str());
+        if (!res) {
+            result = mysql_store_result(reinterpret_cast<MYSQL *>(&connect));
+            if (result && mysql_num_rows(result)) {
+                flag = true;
+            }
+        } else {
+            cout << "queryUsername sql failed!" << endl;
+        }
+        mysql_free_result(result);//释放结果资源
+    } else {
+        cout << "connect username failed!" << endl;
+    }
+
+    return flag;
 }
 
-//查询用户名
 
 
 

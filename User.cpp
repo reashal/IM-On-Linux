@@ -37,5 +37,31 @@ User::User() {
 
 }
 
+//检测用户名是否重复,重复则true
+bool User::sameUserName(string userName) {
+    bool flag = false;
+
+    //连接数据库
+    dUtil.OpenDB();
+
+    if (dUtil.queryUserName(userName)){
+        flag = true;
+        cout << "用户名重复！" << endl;
+    }
+    return flag;
+}
+
+//注册用户
+bool User::registerUser(string userName,string passwd){
+    bool flag = false;
+
+    dUtil.OpenDB();
+
+    if (dUtil.insertUser(userName,passwd)){
+        flag = true;
+        cout << "注册成功！" << endl;
+    }
+}
+
 
 

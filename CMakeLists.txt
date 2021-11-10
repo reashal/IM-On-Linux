@@ -10,7 +10,7 @@ link_directories(${LINK_DIR})
 link_libraries(mysqlclient)
 
 add_executable(IM_FOR_Linux
-        config/mysql_config.h TimeUtil.cpp TimeUtil.h  DUtil.cpp DUtil.h User.cpp User.h  main.cpp main.h )
+        config/mysql_config.h DUtil.cpp DUtil.h TimeUtil.cpp TimeUtil.h   User.cpp User.h  main.cpp main.h )
 # -L/usr/lib/x86_64-linux-gnu -lmysqlclient
 
 target_link_libraries(IM_FOR_Linux mysqlclient)

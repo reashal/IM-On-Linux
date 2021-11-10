@@ -66,22 +66,9 @@ include CMakeFiles/IM_FOR_Linux.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/IM_FOR_Linux.dir/flags.make
 
-CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o: CMakeFiles/IM_FOR_Linux.dir/flags.make
-CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o: ../TimeUtil.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/masker/C++/IM_FOR_Linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o -c /home/masker/C++/IM_FOR_Linux/TimeUtil.cpp
-
-CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/masker/C++/IM_FOR_Linux/TimeUtil.cpp > CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.i
-
-CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/masker/C++/IM_FOR_Linux/TimeUtil.cpp -o CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.s
-
 CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.o: CMakeFiles/IM_FOR_Linux.dir/flags.make
 CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.o: ../DUtil.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/masker/C++/IM_FOR_Linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/masker/C++/IM_FOR_Linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.o -c /home/masker/C++/IM_FOR_Linux/DUtil.cpp
 
 CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.i: cmake_force
@@ -91,6 +78,19 @@ CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.i: cmake_force
 CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/masker/C++/IM_FOR_Linux/DUtil.cpp -o CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.s
+
+CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o: CMakeFiles/IM_FOR_Linux.dir/flags.make
+CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o: ../TimeUtil.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/masker/C++/IM_FOR_Linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o -c /home/masker/C++/IM_FOR_Linux/TimeUtil.cpp
+
+CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/masker/C++/IM_FOR_Linux/TimeUtil.cpp > CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.i
+
+CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/masker/C++/IM_FOR_Linux/TimeUtil.cpp -o CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.s
 
 CMakeFiles/IM_FOR_Linux.dir/User.cpp.o: CMakeFiles/IM_FOR_Linux.dir/flags.make
 CMakeFiles/IM_FOR_Linux.dir/User.cpp.o: ../User.cpp
@@ -120,16 +120,16 @@ CMakeFiles/IM_FOR_Linux.dir/main.cpp.s: cmake_force
 
 # Object files for target IM_FOR_Linux
 IM_FOR_Linux_OBJECTS = \
-"CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o" \
 "CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.o" \
+"CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o" \
 "CMakeFiles/IM_FOR_Linux.dir/User.cpp.o" \
 "CMakeFiles/IM_FOR_Linux.dir/main.cpp.o"
 
 # External object files for target IM_FOR_Linux
 IM_FOR_Linux_EXTERNAL_OBJECTS =
 
-IM_FOR_Linux: CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o
 IM_FOR_Linux: CMakeFiles/IM_FOR_Linux.dir/DUtil.cpp.o
+IM_FOR_Linux: CMakeFiles/IM_FOR_Linux.dir/TimeUtil.cpp.o
 IM_FOR_Linux: CMakeFiles/IM_FOR_Linux.dir/User.cpp.o
 IM_FOR_Linux: CMakeFiles/IM_FOR_Linux.dir/main.cpp.o
 IM_FOR_Linux: CMakeFiles/IM_FOR_Linux.dir/build.make

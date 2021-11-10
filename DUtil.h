@@ -8,7 +8,6 @@
 #include <mysql/mysql.h>
 #include <iostream>
 #include <vector>
-#include "User.h"
 #include "TimeUtil.h"
 
 using namespace std;
@@ -24,8 +23,6 @@ private:
     bool isOpen; //是否连接
     MYSQL *connect{};
     MYSQL_RES *result{};
-    MYSQL_ROW sql_row{};
-    MYSQL_FIELD *fd{};
     TimeUtil timeUtil;
 public:
     DUtil();
@@ -34,7 +31,7 @@ public:
     bool CloseDB();
     bool queryUser(string &username,string &password);//登录
     bool insertUser(string &username,string &password);//注册
-    bool queryUsername(string &username);
+    bool queryUserName(string &username);
 };
 
 
