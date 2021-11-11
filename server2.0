@@ -1,0 +1,98 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<errno.h>
+#include<sys/types.h>
+#include<sys/socket.h>
+#include<netinet/in.h>
+#include<unistd.h>
+#include<arpa/inet.h>
+#define MAX 4096
+#define SERV_PORT 6666
+/*void in_ip() {
+    printf("--please input the next client ip address:\n");
+    scanf("%s", ip_address);
+    //std::cin.ignore();
+    return;
+}*/
+/*int con_ser() {
+    soc_cli = socket(AF_INET, SOCK_STREAM, 0);
+    if (soc_cli == -1) {
+        printf("--failed to create socket\n");
+        return 0;
+    }
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_port = htons(6666);
+    if (inet_pton(AF_INET, ip_address, &servaddr.sin_addr) == -1) {
+        printf("--failed to inet_tion\n");
+        return 0;
+    }
+    if (connect(soc_cli, (struct sockaddr *) &servaddr, sizeof(servaddr)) == -1)
+    {
+        printf("--failed to connection\n");
+        return 0;
+    }
+    printf("--connection success!\n");
+    return 1;
+}
+*/
+/*int send_info() {
+    fgets(mess, 2222, stdin);
+    if (send(soc_cli, mess, strlen(mess), 0) == -1)
+    {
+        printf("--failed to send this  message!\n");
+        return 0;
+    }
+    return 1;
+}*/
+int main(int arg,char** argcv){
+    int  socket_fd=socket(AF_INET, SOCK_STREAM, 0);
+    int  conn_fd;
+    char  buff[MAX];
+    char ipAddr[INET_ADDRSTRLEN];
+    if( socket_fd==-1 ){
+        printf("create socket error: %s(errno: %d)\n",strerror(errno),errno);
+        return 0;
+    }
+    struct sockaddr_in  servaddr,peerAddr;
+    int peerLen;
+    memset(&servaddr, 0, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    servaddr.sin_port = htons(SERV_PORT);
+    int listen_fd=socket(AF_INET, SOCK_STREAM, 0);
+    if( bind(listen_fd, (struct sockaddr*)&servaddr, sizeof(servaddr)) == -1){
+        perror("bind error");
+        exit(1);
+    }
+    if( listen(listen_fd, 10) == -1){
+        printf("listen socket error: %s(errno: %d)\n",strerror(errno),errno);
+        return 0;
+    }
+    printf("waiting for client's request\n");
+    int n;
+    int m;
+    while(1){
+        if( (conn_fd = accept(listen_fd, (struct sockaddr*)NULL, NULL)) == -1){
+            printf("accept socket error: %s(errno: %d)",strerror(errno),errno);
+            continue;
+        }
+    while(1){
+        peerLen=sizeof(peerAddr);
+         if(getpeername(conn_fd, (struct sockaddr *)&peerAddr, &peerLen) == -1){
+            printf("getpeername error\n");
+            exit(0);
+    }
+        printf("connected peer address = %s:%d\n", inet_ntop(AF_INET, &peerAddr.sin_addr, ipAddr, sizeof(ipAddr)), ntohs(peerAddr.sin_port));
+        n = recv(conn_fd, buff, MAX, 0);
+        buff[n] = '\0';
+        if(n!=0){
+        printf("recv msg from client: %s\n", buff);}
+      else {
+        break;}
+}
+        close(conn_fd);
+    }
+    close(listen_fd);
+    return 0;
+}
