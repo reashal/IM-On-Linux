@@ -1,16 +1,20 @@
 #include<cstdio>
 #include<cstdlib>
 #include<cstring>
+#include<netdb.h>
+#include<signal.h>
 #include<unistd.h>
 #include<iostream>
+#include<pthread.h>
 #include<sys/types.h>
 #include<arpa/inet.h>    
 #include<sys/socket.h>
 #include<netinet/in.h>
 using namespace std;
-char ip_address[20],mess[2222],msg_rec[2222];
-int soc_cli,soc_rec,con_rec,fin;
-struct sockaddr_in  servaddr,cliaddr;
+char ip_address[20],mess[2222],msg_rec[2222],l_ip[20]="";
+int soc_cli,soc_rec,con_rec,fin,l_len;
+struct sockaddr_in  servaddr,cliaddr,localaddr;
+pthread_t rcv;
 
 void in_ip()
 {
@@ -70,18 +74,18 @@ int send_info()
   return 1;
 }
 
-int con_recv()
+void con_recv()
 {
-	soc_rec=socket(AF_INET,SOCK_STREAM,0);
+/*	printf("--the chile program\n");
 	cliaddr.sin_family=AF_INET;
 	cliaddr.sin_addr.s_addr=htonl(INADDR_ANY);
 	cliaddr.sin_port=htons(6666);
-	bind(soc_rec,(struct sockaddr*)&cliaddr,sizeof(cliaddr));
-	listen(soc_rec,8);
-	printf("--I'm listening the server program\n");
+	listen(soc_cli,8);*/
+	printf("----I'm listening the server program\n");
 	while(1)
 	{
-		if((con_rec=accept(soc_rec,(struct sockaddr*)NULL,NULL))==-1)
+		bzero(msg_rec,sizeof(msg_rec));
+/*		if((con_rec=accept(soc_cli,(struct sockaddr*)NULL,NULL))==-1)
 			continue;
 		while(1)
 		{
@@ -90,38 +94,50 @@ int con_recv()
 			if(fin!=0) printf("--message from server: %s\n",msg_rec);
 			else break;
 		}
-	close(con_rec);
+	close(con_rec);*/
+		fin=read(soc_cli,msg_rec,sizeof(msg_rec));
+		if(!fin)
+		{
+			printf("----server is close\n");
+			break;
+		}
+		printf("----");
+		fputs(msg_rec,stdout);
+		printf("\n");
 	}
-	close(soc_rec);
-	return 0;
+	close(soc_cli);
+	kill(getppid(),SIGUSR1);
+	exit(EXIT_SUCCESS);
+//	return;
 }
 
 int main()
 {
   // init
   memset(&servaddr,0,sizeof(servaddr));
-  //
-  memset(&cliaddr,0,sizeof(cliaddr));
-  //
   // input server ip address
-//  in_ip();
+  in_ip();
   // wait for result
-//  printf("--please wait to see if the connection is succeed.\n");
-//  if(!con_ser()) return 0;
+  printf("--please wait to see if the connection is succeed.\n");
+  if(!con_ser()) return 0;
   // connect failed
   sleep(1); 
   // connect buffer for success
+//  pthread_create(&rcv,NULL,con_recv,NULL);
+  // create pthread
 //  printf("--now you can send your message: \n");
   // if(!send_info()) return 0;
-/*
+  pid_t k=fork();
+  if(!k) con_recv();
   while(1)
   {
     if(!send_info()) break;
     // send failed. exit
   }
-*/
-  con_recv();
-//  close(soc_cli);
+//  pthread_join(rcv,NULL);
+  // del pthread
+//  con_recv();
+  close(soc_cli);
   // close socket. or the server program may have wrong
   return 0;
 }
