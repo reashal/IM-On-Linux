@@ -71,11 +71,22 @@ int send_info()
 	{
 		fgets(mess,2222,stdin);
 		// buffer | stop when '\n' what want to send 
+		
 		if(send(soc_cli,mess,strlen(mess),0)==-1)
 		// (socket description,buffer,length,0)
 		{
 			printf("--failed to send this  message!\n");
 			return 0;
+		}
+		if(mess[0]=='!'&&mess[1]=='q')
+		{
+			/*
+			close(soc_cli);
+			kill(getppid(),SIGUSR1);
+			exit(EXIT_SUCCESS);
+			return 0;
+			*/
+			break;
 		}
 	}
 	close(soc_cli);
@@ -130,7 +141,8 @@ int main()// 功能实现按数字标号,附注释
   if(k>0) con_recv();
   
   /* 4.子进程发送消息*/
-  if(!k)  send_info();
+  if(!k)
+	  send_info();
   close(soc_cli);
   // 关闭套接字,否则服务端陷入接收消息的死循环
   return 0;
