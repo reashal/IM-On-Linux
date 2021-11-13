@@ -67,15 +67,22 @@ int con_ser()
 
 int send_info()
 {
-  fgets(mess,2222,stdin);
-  // buffer | stop when '\n' what want to send 
-  if(send(soc_cli,mess,strlen(mess),0)==-1)
-  // (socket description,buffer,length,0)
-  {
-    printf("--failed to send this  message!\n");
-    return 0;
-  }
-  return 1;
+	while(1)
+	{
+		fgets(mess,2222,stdin);
+		// buffer | stop when '\n' what want to send 
+		if(send(soc_cli,mess,strlen(mess),0)==-1)
+		// (socket description,buffer,length,0)
+		{
+			printf("--failed to send this  message!\n");
+			return 0;
+		}
+	}
+	close(soc_cli);
+	kill(getppid(),SIGUSR1);
+	exit(EXIT_SUCCESS);
+//	善后工作,关闭套接字/对接父进程
+	return 1;
 }
 
 void con_recv()
@@ -95,10 +102,6 @@ void con_recv()
 		fputs(msg_rec,stdout);
 		printf("\n");
 	}
-	close(soc_cli);
-	kill(getppid(),SIGUSR1);
-	exit(EXIT_SUCCESS);
-//	善后工作,关闭套接字/对接父进程
 }
 
 int main()// 功能实现按数字标号,附注释
@@ -122,15 +125,12 @@ int main()// 功能实现按数字标号,附注释
 
   //sleep(1); 非必须,仅Shell测试时为获取成功信息时美观设置
   
-  /* 3.子进程接收消息*/
+  /* 3.父进程接收消息*/
   pid_t k=fork();
-  if(!k) con_recv();
+  if(k>0) con_recv();
   
-  /* 4.父进程发送消息*/
-  while(send_info())
-  {
-	  // 返回值为0时退出
-  }
+  /* 4.子进程发送消息*/
+  if(!k)  send_info();
   close(soc_cli);
   // 关闭套接字,否则服务端陷入接收消息的死循环
   return 0;
