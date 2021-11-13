@@ -10,12 +10,11 @@
 #include<arpa/inet.h>    
 #include<sys/socket.h>
 #include<netinet/in.h>
-
-int soc_ser,lst,acpt,fin,k,soc_lst;
+using namespace std;
+int soc_ser,lst,acpt,fin,k,soc_lst,tot=0;
 struct sockaddr_in seraddr,cliaddr;
 char msg_rec[2222],mess[2222];
 socklen_t l_size;
-
 int init()
 {
 	soc_ser=socket(AF_INET, SOCK_STREAM, 0);
@@ -45,17 +44,14 @@ int init()
 	return 1;
 }
 
-int send_info()
-{
-  fgets(mess,2222,stdin);
-  // buffer | stop when '\n' what want to send 
-  if(send(soc_ser,mess,strlen(mess),0)==-1)
-  // (socket description,buffer,length,0)
-  {
-    printf("--failed to send this  message!\n");
-    return 0;
-  }
-  return 1;
+int send_info() {
+	stpcpy(mess,"I have rcv your messages  from server!\n");
+    if (send(soc_ser, mess, strlen(mess), 0) == -1)
+    {
+        printf("--failed to send this  message!\n");
+        return 0;
+    }
+    return 1;
 }
 
 void *ser_rcv(void *q)
@@ -63,17 +59,31 @@ void *ser_rcv(void *q)
 	fin=0;
 	k=*(int *)q;
 	bzero(msg_rec,sizeof(msg_rec));
-	while(read(k,msg_rec,sizeof(msg_rec)))
+	while(read(k,msg_rec,sizeof(msg_rec))&&strlen(msg_rec))
+	// 如果读入失败,字符数组清零,连'\0'都没有,踩坑好久
 	{
 		// The string is zeroed out each time a message is received
-		printf("--Msg from client:");
-		fputs(msg_rec,stdout);
-		printf("\n");
-		bzero(msg_rec,sizeof(msg_rec));
+		if(msg_rec[0]=='!'&&msg_rec[1]=='q')
+		{
+			tot--;
+			break;
+		}
+		else
+		{
+			if(msg_rec)
+			printf("--Msg from client:");
+			fputs(msg_rec,stdout);
+			printf("and %d clients\n",pthread_self());
+			{
+				stpcpy(mess,"I have rcv your messages  from server!\n");
+				send(k, mess, strlen(mess), 0);
+			}
+			bzero(msg_rec,sizeof(msg_rec));
+		}
 	}
-	close(k);
+//	close(k);
+    return 0;
 }
-
 int main()
 {
 	if(!init())
@@ -83,9 +93,11 @@ int main()
 		acpt=accept(soc_ser,(struct sockaddr *)&cliaddr,&l_size);
 		if(acpt!=-1)
 		{
+			tot++;
 //			printf("------nn\n");
 			pthread_t k;
 			pthread_create(&k,NULL,ser_rcv,&acpt);
+//			pthread_join(k,NULL);
 		}
 	}
 	close(soc_ser);
